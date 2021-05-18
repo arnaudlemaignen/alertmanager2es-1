@@ -36,7 +36,7 @@ test:
 
 .PHONY: lint
 lint: $(GOLANGCI_LINT_BIN)
-	$(GOLANGCI_LINT_BIN) run -E exportloopref,gofmt --timeout=10m
+	$(GOLANGCI_LINT_BIN) run -E exportloopref,gofmt --timeout=10m --fix
 
 .PHONY: dependencies
 dependencies: $(GOLANGCI_LINT_BIN)

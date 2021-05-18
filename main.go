@@ -29,6 +29,7 @@ var (
 )
 
 func main() {
+	initLoggerToFile()
 	initArgparser()
 
 	log.Infof("starting alertmanager2es v%s (%s; %s; by %v) AL Remix", gitTag, gitCommit, runtime.Version(), Author)

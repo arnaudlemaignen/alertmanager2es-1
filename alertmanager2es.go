@@ -50,6 +50,9 @@ type (
 
 		// Timestamp records when the alert notification was received
 		Timestamp string `json:"@timestamp"`
+		//AL new members visible to Grafana
+		StartsAt     time.Time         `json:"@startsAt"`
+		EndsAt       time.Time         `json:"@endsAt"`
 	}
 )
 

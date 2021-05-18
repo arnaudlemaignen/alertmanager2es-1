@@ -158,6 +158,9 @@ func (e *AlertmanagerElasticsearchExporter) HttpHandler(w http.ResponseWriter, r
 
 	now := time.Now()
 	msg.Timestamp = now.Format(time.RFC3339)
+	//AL reinject start end without nesting only works if 1 notification per alert (group[...])
+	msg.StartsAt = msg.Alerts[0].StartsAt
+	msg.EndsAt = msg.Alerts[0].EndsAt
 
 	incidentJson, _ := json.Marshal(msg)
 

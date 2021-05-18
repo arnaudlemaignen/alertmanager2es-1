@@ -9,6 +9,7 @@ import (
 	"github.com/webdevops/alertmanager2es/config"
 	"net/http"
 	"os"
+	"io"
 	"path"
 	"runtime"
 	"strings"
@@ -53,8 +54,17 @@ func main() {
 	startHttpServer(exporter)
 }
 
+func initLoggerToFile() {
+	var logFile, err = os.OpenFile("am2es.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+    if err != nil {
+        fmt.Println("Could Not Open Log File : " + err.Error())
+    }
+	mw := io.MultiWriter(os.Stdout, logFile)
+	log.SetOutput(mw)
+}
 // init argparser and parse/validate arguments
 func initArgparser() {
+
 	argparser = flags.NewParser(&opts, flags.Default)
 	_, err := argparser.Parse()
 

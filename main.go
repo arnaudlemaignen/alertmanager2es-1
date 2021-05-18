@@ -30,7 +30,7 @@ var (
 func main() {
 	initArgparser()
 
-	log.Infof("starting alertmanager2es v%s (%s; %s; by %v)", gitTag, gitCommit, runtime.Version(), Author)
+	log.Infof("starting alertmanager2es v%s (%s; %s; by %v) AL Remix", gitTag, gitCommit, runtime.Version(), Author)
 	log.Info(string(opts.GetJson()))
 
 	log.Infof("init exporter")
